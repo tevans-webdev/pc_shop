@@ -1,13 +1,15 @@
-import { makeStyles } from '@material-ui/core/styles'
-import FormControl from '@material-ui/core/FormControl'
-import OutlinedInput from '@material-ui/core/OutlinedInput'
-import InputLabel from '@material-ui/core/InputLabel'
-import Button from '@material-ui/core/Button'
-import Typography from '@material-ui/core/Typography'
-import Snackbar from '@material-ui/core/Snackbar'
+import {
+  makeStyles,
+  FormControl,
+  OutlinedInput,
+  InputLabel,
+  Button,
+  Typography,
+  Snackbar
+} from '@material-ui/core'
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useHistory } from 'react-router-dom'
+import { useHistory, useLocation, Link } from 'react-router-dom'
 import { login } from '../actions/userActions'
 import Loader from '../components/Loader'
 
@@ -36,6 +38,8 @@ const LoginScreen = () => {
   const [password, setPassword] = useState('')
 
   const history = useHistory()
+  const location = useLocation()
+  const redirect = location.search ? location.search.split('=')[1] : '/'
   const dispatch = useDispatch()
   const userLogin = useSelector(state => state.userLogin)
   const { loading, error, userInfo } = userLogin
@@ -47,9 +51,9 @@ const LoginScreen = () => {
 
   useEffect(() => {
     if (userInfo) {
-      history.push('/')
+      history.push(redirect)
     }
-  }, [userInfo, history])
+  }, [userInfo, history, redirect])
 
   return (
     <div className={classes.root}>
@@ -84,9 +88,24 @@ const LoginScreen = () => {
             onChange={e => setPassword(e.target.value)}
           />
         </FormControl>
-        <Button type='submit' variant='contained' style={{ marginTop: 20 }}>
+        <Button
+          type='submit'
+          variant='contained'
+          style={{ marginTop: 20, display: 'inline-block' }}
+        >
           Login
         </Button>
+        <Link
+          to={redirect ? `/register?redirect=${redirect}` : '/register'}
+          style={{
+            color: '#333',
+            textDecoration: 'none',
+            marginTop: 20,
+            display: 'inline-block'
+          }}
+        >
+          <Typography variant='caption'>register</Typography>
+        </Link>
       </form>
     </div>
   )

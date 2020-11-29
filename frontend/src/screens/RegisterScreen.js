@@ -1,16 +1,18 @@
-import { makeStyles } from '@material-ui/core/styles'
-import FormControl from '@material-ui/core/FormControl'
-import OutlinedInput from '@material-ui/core/OutlinedInput'
-import InputLabel from '@material-ui/core/InputLabel'
-import Button from '@material-ui/core/Button'
-import Typography from '@material-ui/core/Typography'
-import Snackbar from '@material-ui/core/Snackbar'
+import {
+  makeStyles,
+  FormControl,
+  OutlinedInput,
+  InputLabel,
+  Button,
+  Typography,
+  Snackbar
+} from '@material-ui/core'
+import Alert from '@material-ui/lab/Alert'
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useHistory } from 'react-router-dom'
+import { useHistory, useLocation, Link } from 'react-router-dom'
 import { register } from '../actions/userActions'
 import Loader from '../components/Loader'
-import Alert from '@material-ui/lab/Alert'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -41,6 +43,8 @@ const RegisterScreen = () => {
   const [confirm, setConfirm] = useState('')
 
   const history = useHistory()
+  const location = useLocation()
+  const redirect = location.search ? location.search.split('=')[1] : '/'
   const dispatch = useDispatch()
   const userRegister = useSelector(state => state.userRegister)
   const { loading, error, userInfo } = userRegister
@@ -61,9 +65,9 @@ const RegisterScreen = () => {
 
   useEffect(() => {
     if (userInfo) {
-      history.push('/')
+      history.push(redirect)
     }
-  }, [userInfo, history])
+  }, [userInfo, history, redirect])
 
   return (
     <div className={classes.root}>
@@ -127,6 +131,17 @@ const RegisterScreen = () => {
         <Button type='submit' variant='contained' style={{ marginTop: 20 }}>
           Sign Up
         </Button>
+        <Link
+          to={redirect ? `/login?redirect=${redirect}` : '/login'}
+          style={{
+            color: '#333',
+            textDecoration: 'none',
+            marginTop: 20,
+            display: 'inline-block'
+          }}
+        >
+          <Typography variant='caption'>login</Typography>
+        </Link>
       </form>
     </div>
   )

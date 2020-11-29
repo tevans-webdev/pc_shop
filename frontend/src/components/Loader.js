@@ -6,7 +6,11 @@ const Loader = () => {
   const [open, setOpen] = useState(true)
 
   return (
-    <Backdrop open={open} onClick={() => setOpen(false)}>
+    <Backdrop
+      open={open}
+      onClick={() => setOpen(false)}
+      style={{ zIndex: 100 }}
+    >
       <CircularProgress />
     </Backdrop>
   )

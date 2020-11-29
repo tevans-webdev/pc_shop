@@ -4,9 +4,8 @@ import {
   ThemeProvider,
   makeStyles
 } from '@material-ui/core/styles'
-import Container from '@material-ui/core/Container'
-import pink from '@material-ui/core/colors/pink'
-import grey from '@material-ui/core/colors/grey'
+import { Container } from '@material-ui/core'
+import { grey, pink } from '@material-ui/core/colors'
 import 'fontsource-roboto'
 import HeaderBar from './components/HeaderBar'
 import Footer from './components/Footer'
@@ -14,11 +13,15 @@ import HomeScreen from './screens/HomeScreen'
 import LoginScreen from './screens/LoginScreen'
 import RegisterScreen from './screens/RegisterScreen'
 import ProductScreen from './screens/ProductScreen'
+import CartScreen from './screens/CartScreen'
+import ShippingScreen from './screens/ShippingScreen'
+import PaymentScreen from './screens/PaymentScreen'
+import PlaceOrderScreen from './screens/PlaceOrderScreen'
 
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: pink[500]
+      main: pink[300]
     },
     secondary: {
       main: grey[800]
@@ -28,8 +31,9 @@ const theme = createMuiTheme({
 
 const useStyles = makeStyles(theme => ({
   main: {
-    minHeight: '100vh',
-    padding: '4rem'
+    minHeight: '80vh',
+    padding: '4rem',
+    paddingBottom: '5rem'
   }
 }))
 
@@ -55,6 +59,18 @@ const App = () => {
                 </Route>
                 <Route path='/products/:id'>
                   <ProductScreen />
+                </Route>
+                <Route path='/cart/:id?'>
+                  <CartScreen />
+                </Route>
+                <Route path='/shipping'>
+                  <ShippingScreen />
+                </Route>
+                <Route path='/payment'>
+                  <PaymentScreen />
+                </Route>
+                <Route path='/placeorder'>
+                  <PlaceOrderScreen />
                 </Route>
               </Switch>
             </Container>

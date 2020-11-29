@@ -9,7 +9,8 @@ const db = async () => {
     })
 
     console.log(
-      `Database connection successful: ${conn.connection.host}`.yellow.inverse
+      `Database connection successful: ${conn.connection.host}`.blue.inverse
+        .underline
     )
   } catch (err) {
     console.error(err.message)

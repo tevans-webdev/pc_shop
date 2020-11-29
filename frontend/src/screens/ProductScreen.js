@@ -4,19 +4,21 @@ import { useDispatch, useSelector } from 'react-redux'
 import Rating from '../components/Rating'
 import Loader from '../components/Loader'
 import { listProductDetails } from '../actions/productActions'
-import Grid from '@material-ui/core/Grid'
-import Typography from '@material-ui/core/Typography'
-import Snackbar from '@material-ui/core/Snackbar'
-import Divider from '@material-ui/core/Divider'
-import Container from '@material-ui/core/Container'
-import Table from '@material-ui/core/Table'
-import TableRow from '@material-ui/core/TableRow'
-import TableCell from '@material-ui/core/TableCell'
-import TableBody from '@material-ui/core/TableBody'
-import TextField from '@material-ui/core/TextField'
-import MenuItem from '@material-ui/core/MenuItem'
-import Button from '@material-ui/core/Button'
-import TextareaAutoSize from '@material-ui/core/TextareaAutosize'
+import {
+  Grid,
+  Typography,
+  Snackbar,
+  Divider,
+  Container,
+  Table,
+  TableRow,
+  TableCell,
+  TableBody,
+  TextField,
+  MenuItem,
+  Button,
+  TextareaAutosize
+} from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles(theme => ({
@@ -67,6 +69,14 @@ const ProductScreen = () => {
         <Fragment>
           <Grid container spacing={3}>
             <Grid item xs={12} lg={6}>
+              <Button
+                variant='contained'
+                color='secondary'
+                onClick={() => history.push('/')}
+                style={{ marginBottom: '15px' }}
+              >
+                Go Back
+              </Button>
               <img
                 src={product.image}
                 alt={product.name}
@@ -115,7 +125,7 @@ const ProductScreen = () => {
                           select
                           label='Qty'
                           value={qty}
-                          onChange={e => setQty(e.target.value)}
+                          onChange={e => setQty(Number(e.target.value))}
                           helperText='Please select the quantity'
                         >
                           {[...Array(product.countInStock).keys()].map(x => (
@@ -159,7 +169,7 @@ const ProductScreen = () => {
                   value={rating}
                   onChange={e => setRating(e.target.value)}
                 />
-                <TextareaAutoSize
+                <TextareaAutosize
                   rowsMin={3}
                   placeholder='Write review'
                   style={{ margin: '15px 0', width: '40%', padding: 20 }}

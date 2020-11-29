@@ -1,17 +1,19 @@
-import AppBar from '@material-ui/core/AppBar'
-import ToolBar from '@material-ui/core/Toolbar'
-import Typography from '@material-ui/core/Typography'
-import Button from '@material-ui/core/Button'
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  Button,
+  Menu,
+  MenuItem,
+  makeStyles
+} from '@material-ui/core'
 import ComputerIcon from '@material-ui/icons/Computer'
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart'
-import Menu from '@material-ui/core/Menu'
-import MenuItem from '@material-ui/core/MenuItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import AccountIcon from '@material-ui/icons/AccountCircle'
 import ExitToAppIcon from '@material-ui/icons/ExitToApp'
-import { makeStyles } from '@material-ui/core/styles'
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { logout } from '../actions/userActions'
 
@@ -34,13 +36,15 @@ const useStyles = makeStyles(theme => ({
   link: {
     textDecoration: 'none',
     color: '#fff',
-    padding: 10
+    padding: 10,
+    margin: '0 20px'
   }
 }))
 
 const HeaderBar = () => {
   const classes = useStyles()
   const [anchor, setAnchor] = useState(null)
+  const history = useHistory()
 
   const handleClick = e => setAnchor(e.currentTarget)
 
@@ -53,8 +57,9 @@ const HeaderBar = () => {
   return (
     <div className={classes.root}>
       <AppBar position='static' color='secondary'>
-        <ToolBar variant='regular'>
-          <ComputerIcon style={{ marginRight: 10 }} />
+        <Toolbar variant='regular'>
+          <ComputerIcon style={{ margin: '0 20px' }} />
+
           <Typography variant='h6' className={classes.title}>
             PCShop
           </Typography>
@@ -67,9 +72,13 @@ const HeaderBar = () => {
                 aria-controls='user-menu'
                 aria-haspopup='true'
                 onClick={handleClick}
-                color='inherit'
+                color='primary'
+                variant='contained'
+                style={{ marginRight: 20 }}
               >
-                {userInfo.name}
+                <Typography variant='caption' style={{ color: '#fff' }}>
+                  {userInfo.name.split(' ')[0]}
+                </Typography>
               </Button>
               <Menu
                 id='user-menu'
@@ -94,6 +103,7 @@ const HeaderBar = () => {
                   onClick={() => {
                     setAnchor(null)
                     dispatch(logout())
+                    history.push('/')
                   }}
                 >
                   <ListItemIcon>
@@ -108,7 +118,7 @@ const HeaderBar = () => {
               <Typography variant='h6'>Login</Typography>
             </Link>
           )}
-        </ToolBar>
+        </Toolbar>
       </AppBar>
     </div>
   )

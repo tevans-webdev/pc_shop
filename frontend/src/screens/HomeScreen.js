@@ -1,12 +1,10 @@
-import { makeStyles } from '@material-ui/core/styles'
-import Typography from '@material-ui/core/Typography'
-import Grid from '@material-ui/core/Grid'
+import { makeStyles, Typography, Grid, Snackbar } from '@material-ui/core'
 import Product from '../components/Product'
 import { Fragment } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { listProducts } from '../actions/productActions'
 import { useEffect } from 'react'
-import Snackbar from '@material-ui/core/Snackbar'
+import Loader from '../components/Loader'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -30,7 +28,7 @@ const HomeScreen = () => {
         Latest Products
       </Typography>
       {loading ? (
-        <Typography variant='h4'>Loading...</Typography>
+        <Loader />
       ) : error ? (
         <Snackbar
           anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
