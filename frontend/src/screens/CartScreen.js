@@ -69,7 +69,7 @@ const CartScreen = () => {
           </Button>
           <Typography
             variant='h4'
-            style={{ margin: '20px 0', display: 'block' }}
+            style={{ margin: '20px 0', display: 'block', color: '#fff' }}
           >
             <ShoppingCartIcon /> Shopping Cart
           </Typography>
@@ -85,7 +85,11 @@ const CartScreen = () => {
                     />
                   </TableCell>
                   <TableCell>
-                    <Typography variant='h6' component='span'>
+                    <Typography
+                      variant='h6'
+                      component='span'
+                      style={{ color: '#fff' }}
+                    >
                       {item.name}
                     </Typography>
                   </TableCell>
@@ -111,6 +115,7 @@ const CartScreen = () => {
                   <TableCell>
                     <Button
                       variant='contained'
+                      color='secondary'
                       onClick={() => removeFromCartHandler(item.product)}
                     >
                       <DeleteForeverIcon className={classes.trash} />
@@ -126,11 +131,15 @@ const CartScreen = () => {
             <TableBody>
               <TableRow>
                 <TableCell>
-                  <Typography variant='h3'>
+                  <Typography variant='h3' style={{ color: '#fff' }}>
                     Subtotal (
                     {cartItems.reduce((acc, item) => acc + item.qty, 0)}) items
                   </Typography>
-                  <Typography variant='body1' component='h5'>
+                  <Typography
+                    variant='body1'
+                    component='h5'
+                    style={{ color: '#fff' }}
+                  >
                     ${' '}
                     {cartItems
                       .reduce((acc, item) => acc + item.qty * item.price, 0)
@@ -140,7 +149,12 @@ const CartScreen = () => {
               </TableRow>
               <TableRow>
                 <TableCell>
-                  <Button variant='contained' onClick={checkoutHandler}>
+                  <Button
+                    variant='contained'
+                    onClick={checkoutHandler}
+                    size='large'
+                    color='primary'
+                  >
                     Proceed To Checkout
                   </Button>
                 </TableCell>

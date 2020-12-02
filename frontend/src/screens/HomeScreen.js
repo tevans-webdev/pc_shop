@@ -24,7 +24,7 @@ const HomeScreen = () => {
 
   return (
     <Fragment>
-      <Typography variant='h3' style={{ marginBottom: 20 }}>
+      <Typography variant='h3' style={{ marginBottom: 40, color: '#fff' }}>
         Latest Products
       </Typography>
       {loading ? (

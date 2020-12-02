@@ -78,8 +78,9 @@ const PaymentScreen = () => {
         <Button
           type='submit'
           variant='contained'
-          style={{ marginTop: '3rem' }}
+          style={{ marginTop: '3rem', width: 400 }}
           size='large'
+          color='primary'
         >
           Continue
         </Button>

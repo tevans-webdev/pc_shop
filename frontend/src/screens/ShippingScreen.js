@@ -91,11 +91,11 @@ const ShippingScreen = () => {
         <Button
           variant='contained'
           color='primary'
-          style={{ marginTop: '2rem' }}
+          style={{ marginTop: '2rem', width: 400 }}
           size='large'
           type='submit'
         >
-          Continue To Payment Method
+          Continue
         </Button>
       </form>
     </Container>

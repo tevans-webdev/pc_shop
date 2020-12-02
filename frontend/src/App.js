@@ -5,7 +5,7 @@ import {
   makeStyles
 } from '@material-ui/core/styles'
 import { Container } from '@material-ui/core'
-import { grey, pink } from '@material-ui/core/colors'
+import { grey, lightGreen } from '@material-ui/core/colors'
 import 'fontsource-roboto'
 import HeaderBar from './components/HeaderBar'
 import Footer from './components/Footer'
@@ -21,10 +21,13 @@ import PlaceOrderScreen from './screens/PlaceOrderScreen'
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: pink[300]
+      main: lightGreen['A700']
     },
     secondary: {
       main: grey[800]
+    },
+    shit: {
+      main: '#fff'
     }
   }
 })
@@ -33,7 +36,8 @@ const useStyles = makeStyles(theme => ({
   main: {
     minHeight: '80vh',
     padding: '4rem',
-    paddingBottom: '5rem'
+    paddingBottom: '5rem',
+    backgroundColor: '#777'
   }
 }))
 

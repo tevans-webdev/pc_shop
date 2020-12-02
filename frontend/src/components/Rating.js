@@ -6,9 +6,7 @@ import Typography from '@material-ui/core/Typography'
 
 const useStyles = makeStyles(theme => ({
   rating: {
-    // span: {
-    //   margin: '0.1rem'
-    // }
+    color: '#fff'
   }
 }))
 

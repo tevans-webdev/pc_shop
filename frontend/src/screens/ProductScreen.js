@@ -84,7 +84,10 @@ const ProductScreen = () => {
               />
             </Grid>
             <Grid item xs={12} lg={3}>
-              <Typography variant='h4' style={{ marginBottom: 20 }}>
+              <Typography
+                variant='h4'
+                style={{ marginBottom: 20, color: '#fff' }}
+              >
                 {product.name}
               </Typography>
               <Divider />
@@ -95,7 +98,10 @@ const ProductScreen = () => {
               />
               <br />
               <Divider />
-              <Typography variant='subtitle1' style={{ marginTop: 20 }}>
+              <Typography
+                variant='subtitle1'
+                style={{ marginTop: 20, color: '#fff' }}
+              >
                 {product.description}
               </Typography>
             </Grid>
@@ -104,14 +110,14 @@ const ProductScreen = () => {
                 <TableBody>
                   <TableRow>
                     <TableCell>
-                      <Typography variant='h6'>
+                      <Typography variant='h6' style={{ color: '#fff' }}>
                         <strong>Price:</strong> ${product.price}
                       </Typography>
                     </TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell>
-                      <Typography variant='h6'>
+                      <Typography variant='h6' style={{ color: '#fff' }}>
                         <strong>Status: </strong>
                         {product.countInStock > 0 ? 'In Stock' : 'Out of stock'}
                       </Typography>
@@ -155,17 +161,23 @@ const ProductScreen = () => {
           </Grid>
           <Grid container>
             <Grid item lg={12}>
-              <Typography variant='h4' style={{ margin: '10px 0' }}>
+              <Typography
+                variant='h4'
+                style={{ margin: '10px 0', color: '#fff' }}
+              >
                 Reviews
               </Typography>
               <form className={classes.form} onSubmit={handleSubmit}>
-                <Typography variant='h5' style={{ margin: '10px 0' }}>
+                <Typography
+                  variant='h5'
+                  style={{ margin: '10px 0', color: '#fff' }}
+                >
                   Write a review
                 </Typography>
                 <TextField
                   type='number'
                   label='Rating'
-                  style={{ margin: '15px 0', width: '30%' }}
+                  style={{ margin: '15px 0', width: '30%', color: '#fff' }}
                   value={rating}
                   onChange={e => setRating(e.target.value)}
                 />

@@ -1,4 +1,4 @@
-import { Chip, Typography, makeStyles } from '@material-ui/core'
+import { Chip, makeStyles } from '@material-ui/core'
 import LockIcon from '@material-ui/icons/Lock'
 import LocalShippingIcon from '@material-ui/icons/LocalShipping'
 import PaymentIcon from '@material-ui/icons/Payment'
@@ -9,8 +9,16 @@ const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'space-evenly',
+    justifyContent: 'space-around',
     marginBottom: '3rem'
+  },
+  stepComplete: {
+    padding: 20,
+    borderBottom: '2px solid #64dd17'
+  },
+  stepIncomplete: {
+    padding: 20,
+    borderBottom: '2px solid #999'
   }
 }))
 
@@ -20,7 +28,7 @@ const CheckoutSteps = ({ step1, step2, step3, step4 }) => {
 
   return (
     <div className={classes.root}>
-      <div>
+      <div className={step1 ? classes.stepComplete : classes.stepIncomplete}>
         {step1 ? (
           <Chip
             label='Sign In'
@@ -34,7 +42,7 @@ const CheckoutSteps = ({ step1, step2, step3, step4 }) => {
           <Chip label='Sign In' size='medium' icon={<LockIcon />} />
         )}
       </div>
-      <div>
+      <div className={step2 ? classes.stepComplete : classes.stepIncomplete}>
         {step2 ? (
           <Chip
             label='Shipping'
@@ -48,7 +56,7 @@ const CheckoutSteps = ({ step1, step2, step3, step4 }) => {
           <Chip label='Shipping' icon={<LocalShippingIcon />} size='medium' />
         )}
       </div>
-      <div>
+      <div className={step3 ? classes.stepComplete : classes.stepIncomplete}>
         {step3 ? (
           <Chip
             label='Payment'
@@ -62,7 +70,7 @@ const CheckoutSteps = ({ step1, step2, step3, step4 }) => {
           <Chip label='Payment' icon={<PaymentIcon />} size='medium' />
         )}
       </div>
-      <div>
+      <div className={step4 ? classes.stepComplete : classes.stepIncomplete}>
         {step4 ? (
           <Chip
             label='Place Order'
